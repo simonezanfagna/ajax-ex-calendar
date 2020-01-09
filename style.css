@@ -1,0 +1,33 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: sans-serif;
+}
+
+header{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gestione-mesi{
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.gestione-mesi i{
+  cursor: pointer;
+  font-size: 22px;
+}
+
+main{
+  text-align: center;
+}
