@@ -35,21 +35,52 @@ $(document).ready(function () {
     var mese = data.format("MMMM");
     $('#nome-mese').text(mese);
 
+    var anno_mese_giorno = moment(data);
     for (var i = 1; i <= giorni_del_mese; i++) {
       if (i < 10) {
         var context = {
-          'giorno' : '0' + i + ' ' + mese
+          'giorno' : '0' + i + ' ' + mese,
+          'data' : anno_mese_giorno.format("YYYY-MM-") + '0' + i
         }
       }
       else {
         var context = {
-          'giorno' : i + ' ' + mese
+          'giorno' : i + ' ' + mese,
+          'data' : anno_mese_giorno.format("YYYY-MM-") + i
         }
       }
 
       var html = template(context);
       $('main #calendario').append(html);
+
+
     }
+    $.ajax({
+      'url' : 'https://flynn.boolean.careers/exercises/api/holidays',
+      'method' : 'GET',
+      'data' : {
+        'year' : 2018,
+        'month' : data.month()
+      },
+      'success': function (data_risultati) {
+        var festivita = data_risultati.response;
+        console.log(festivita);
+        for (var i = 0; i < festivita.length; i++) {
+          var singolaFestivita = festivita[i];
+          var dataFestivita = singolaFestivita.date;
+          var nomeFestivita = singolaFestivita.name;
+          $('#calendario li').each(function () {
+            if ($(this).attr('data-calendario') == dataFestivita) {
+              $(this).addClass('giornoFesta');
+              $(this).append(' - ' + nomeFestivita);
+            }
+          })
+        }
+      },
+      'error' : function () {
+        alert('errore')
+      }
+    })
   }
 
 })

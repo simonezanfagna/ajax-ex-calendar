@@ -18,9 +18,13 @@ header{
 
 .gestione-mesi{
   width: 100px;
-  display: flex;
-  justify-content: space-between;
   margin-top: 10px;
+}
+
+.gestione-mesi::after{
+  clear: both;
+  display: table;
+  content: '';
 }
 
 .gestione-mesi i{
@@ -28,6 +32,18 @@ header{
   font-size: 22px;
 }
 
+.fa-chevron-circle-left{
+  float: left;
+}
+
+.fa-chevron-circle-right{
+  float: right;
+}
+
 main{
   text-align: center;
+}
+
+.giornoFesta{
+  color: red;
 }
