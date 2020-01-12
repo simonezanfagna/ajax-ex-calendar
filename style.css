@@ -10,7 +10,7 @@ body{
 
 header{
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,9 +41,23 @@ header{
 }
 
 main{
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .giornoFesta{
   color: red;
+}
+
+#calendario{
+  list-style-type: none;
+  width: 1050px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#calendario li{
+  width: 150px;
+  height: 75px;
+  border: 1px solid black;
 }
